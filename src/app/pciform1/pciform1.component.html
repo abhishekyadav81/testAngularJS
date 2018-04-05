@@ -3,12 +3,12 @@
     <fieldset id="group1" >
       <div class="form-group row">
         <label for="dealerInput" class=" col-form-label col-3">Dealer</label>      
-        <input type="text" id="dealerInput" name="dealerInput" class="col-6" ngModel/>
+        <input type="text" id="dealerInput" name="dealer" class="col-6" ngModel/>
       </div>
 
       <div class="form-group row">
           <label for="zoneInput" class="col-form-label col-3 ">Zone</label>
-          <input type="text" id="zoneInput" class="col-6"/>
+          <input type="text" id="zoneInput" name="zone" class="col-6" ngModel/>
       </div>
 
     </fieldset>
@@ -17,7 +17,7 @@
 
     <div class="form-group row">
       <label for="yearInput" class="col-3 col-form-label">Year</label>
-      <input type="text" id="yearInput" class="col-3">
+      <input type="text" id="yearInput" name="year" class="col-3" ngModel>
     </div>
 
     <div class="form-group">
@@ -26,28 +26,28 @@
               <div class='col'>          
                 <input type="radio" class="form-group-input" name="attributes1">            
                 <label  class="col-3 col-form-label">Crop</label> 
-                <input type="text" id="cropInput" class="col-8">                
+                <input type="text" name="crop" id="cropInput" class="col-8" ngModel>                
               </div>
         </div>
 
             <div class='row'>                      
               <label class="col-3 col-form-label" style="margin-left: 20%">Hybrid/Variety</label>
-              <input type="text" id="cropInput" class="col-5"/>
+              <input type="text" name="hybrid" id="hybridInput" class="col-5" ngModel/>
             </div>
           
           <div class='row'>          
             <input type="radio" class="form-group-input" style="margin-left: 18%" name="attributes1">            
             <label class="col-3 col-form-label">Material Id</label>
-            <input type="text" id="materialInput" class="col-5"/>
+            <input type="text" id="materialInput" name="material" class="col-5" ngModel/>
           </div>
     </div>
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Price Change Date</label>
         <label for="priceChangeFromInput" class="col-sm-1 col-form-label">From</label> 
-        <input type="text" id="priceChangeFromInput" class="col-sm-2" />
+        <input type="text" name="priceChangeFrom" id="priceChangeFromInput" class="col-sm-2" ngModel />
 
         <label for="priceChangeToInput" class="col-sm-1 col-form-label">To</label>         
-        <input type="text" id="priceChangeToInput" class="col-sm-2"/>
+        <input type="text" name="priceChangeTo" id="priceChangeToInput" class="col-sm-2"/>
     </div>
     </fieldset>
 
@@ -55,11 +55,11 @@
     <div class="form-check row">
       <div class='row'>
         <label for="sendXmlOption" class="col-sm-3 col-form-label">Send Updated XML to Customer </label>      
-          <input type="radio" class="form-check-input" name="sendXmlOption"/>
+          <input type="radio" class="form-check-input" name="sendXmlOption" value="SendUpdated" ngModel/>
         </div>
         <div class='row'>        
           <label for="sendXmlOption" class="col-sm-3 col-form-label">Send Full Refresh to XML</label>
-          <input type="radio" class="form-check-input" name="sendXmlOption"/>
+          <input type="radio" class="form-check-input" name="sendXmlOption" value="SendFullRefresh" ngModel/>
         </div>
     </div>
   </fieldset>  
