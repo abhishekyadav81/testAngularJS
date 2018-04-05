@@ -26,9 +26,9 @@ export class PciForm1Component implements OnInit {
     
   }
 
-  logForm(value: any) {
+  onSubmit(value: any) {
     console.log(value);
-    this.pciFormService.invokePciFormService(value);
+    this.pciFormService.invokePciFormService(value).subscribe( error => console.log(error));
   }
 
 }

@@ -1,5 +1,5 @@
-<div class="container" border="1">
-  <form (submit)="logForm(pciForm1.value)" #pciForm1="ngForm" >
+<div class="container">
+  <form (submit)="onSubmit(pciForm1.value)" #pciForm1="ngForm" action="post" >
     <fieldset id="group1" >
       <div class="form-group row">
         <label for="dealerInput" class=" col-form-label col-3">Dealer</label>      

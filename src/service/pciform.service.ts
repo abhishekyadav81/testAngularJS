@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable, ErrorHandler } from '@angular/core';
+import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import {PciFormData} from '../model/pciformdata'
-import { catchError, map, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
+import 'rxjs/add/operator/catch';
+
 
 
 const httpOptions = {
@@ -15,12 +17,17 @@ export class PciFormService {
 
  
   constructor(private http:HttpClient) { }
-    pciFormUrl : string="";
+    private pciFormUrl ="http://localhost:9080/some";
  
   /** POST: submit data to the server */
   invokePciFormService (pciFormData: PciFormData) {
-    return this.http.post<PciFormData>(this.pciFormUrl, pciFormData, httpOptions).pipe(
-      tap((pciFormData: PciFormData) => console.log('Post Done')))
+    return this.http.post<PciFormData>(this.pciFormUrl, pciFormData, httpOptions)
+    .catch(this.errorHandler)
+  }
+
+  errorHandler(error: HttpErrorResponse){
+    console.log(error.message);
+    return Observable.throw(error.message || 'Server Error');
   }
 
 }
