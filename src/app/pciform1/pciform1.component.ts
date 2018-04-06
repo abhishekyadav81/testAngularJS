@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PciFormService } from '../../service/pciform.service';
+import {PciFormData} from '../../model/pciformdata'
 
 @Component({
   selector: 'app-pciform1',
@@ -8,17 +9,8 @@ import { PciFormService } from '../../service/pciform.service';
 })
 export class PciForm1Component implements OnInit {
 
-  dealer: String;
-  zone: String;
-  year: Number;
-  crop: String;
-  hybrid: String;
-  material: String;
-  priceChangeFrom: Date;
-  priceChangeTo: Date;
 
-  
-
+  pciFormData = new PciFormData();
 
   constructor(private pciFormService : PciFormService) { }
 
@@ -26,9 +18,12 @@ export class PciForm1Component implements OnInit {
     
   }
 
-  onSubmit(value: any) {
-    console.log(value);
-    this.pciFormService.invokePciFormService(value).subscribe( error => console.log(error));
+  onSubmit() {
+    if(!this.pciFormData.year){
+      console.error('Year is required');
+    } else{
+      console.log(JSON.stringify(this.pciFormData));
+      this.pciFormService.invokePciFormService(this.pciFormData).subscribe( error => console.log(error));
+    }
   }
-
 }

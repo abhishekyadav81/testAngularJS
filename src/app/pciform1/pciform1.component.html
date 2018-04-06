@@ -1,31 +1,40 @@
-<div class="container" style='background:lightgreen'>
-  <form (submit)="onSubmit(pciForm1.value)" #pciForm1="ngForm" action="post" >
+<div class="container" style='background:rgb(84, 177, 84)'>
+  <form (submit)="onSubmit()" #pciForm1="ngForm" action="post">
 
   
     <fieldset id="group1" >
-       
     <div class="panel panel-default">  
-       <div class="panel-heading" style='background: darkseagreen'>group1</div> 
+       <div class="panel-heading" style='background: rgb(176, 211, 176)'>Group1</div> 
             
         <div class="form-group row panel-body" >
           <label for="dealerInput" class=" col-form-label col-3">Dealer</label>      
-          <input type="text" id="dealerInput" name="dealer" class="col-6" ngModel/>
+          <input type="text" id="dealerInput" name="dealer" class="col-6" 
+           [(ngModel)]="pciFormData.dealer" #dealer="ngModel" />
         </div>
 
 
       <div class="form-group row">
           <label for="zoneInput" class="col-form-label col-3 ">Zone</label>
-          <input type="text" id="zoneInput" name="zone" class="col-6" ngModel/>
+          <input type="text" id="zoneInput" name="zone" class="col-6" 
+          [(ngModel)]="pciFormData.zone" #zone="ngModel" />
       </div>
       <div class="form-group row">
           <label for="yearInput" class="col-3 col-form-label">Year</label>
-          <input type="text" id="yearInput" name="year" class="col-2" ngModel>
+
+          <input id="year" name="year" class="form-control" class="col-2"
+          required [(ngModel)]="pciFormData.year" #year="ngModel" />
+        
+        <div *ngIf="year.invalid && (year.dirty || year.touched)" class="alert alert-danger">
+          <div *ngIf="year.errors.required">
+            Year is required.
+          </div>
+        </div>
         </div>
     </div>      
     </fieldset>
 
     <fieldset id="group2">  
-        <div class="panel-heading" style='background: darkseagreen'>group2</div> 
+        <div class="panel-heading" style='background: darkseagreen'>Group2</div> 
 
     <div class="form-group grid">
       <div class='row'>
@@ -33,44 +42,52 @@
               <div class='col'>          
                 <input type="radio" class="form-group-input" name="attributes1">            
                 <label  class="col-3 col-form-label">Crop</label> 
-                <input type="text" name="crop" id="cropInput" class="col-8" ngModel>                
+                <input type="text" name="crop" id="cropInput" class="col-8" 
+                [(ngModel)]="pciFormData.crop" #crop="ngModel" />>                
               </div>
         </div>
 
             <div class='row'>                      
               <label class="col-3 col-form-label" style="margin-left: 20%">Hybrid/Variety</label>
-              <input type="text" name="hybrid" id="hybridInput" class="col-5" ngModel/>
+              <input type="text" name="hybrid" id="hybridInput" class="col-5" 
+              [(ngModel)]="pciFormData.hybrid" #hybrid="ngModel"/>
             </div>
           
           <div class='row'>          
             <input type="radio" class="form-group-input" style="margin-left: 18%" name="attributes1">            
             <label class="col-3 col-form-label">Material Id</label>
-            <input type="text" id="materialInput" name="material" class="col-5" ngModel/>
+            <input type="text" id="materialInput" name="material" class="col-5"
+            [(ngModel)]="pciFormData.material" #material="ngModel"/>
           </div>
     </div>
     <div class="form-group row">
         <label class="col-2 col-form-label">Price Change Date</label>
         <label for="priceChangeFromInput" class="col-1 col-form-label">From</label> 
-        <input type="text" name="priceChangeFrom" id="priceChangeFromInput" class="col-2" ngModel />
+        <input type="date" name="priceChangeFrom" id="priceChangeFromInput" class="col-2" 
+        [(ngModel)]="pciFormData.priceChangeFrom" #priceChangeFrom="ngModel"/>
 
         <label for="priceChangeToInput" class="col-1 col-form-label">To</label>         
-        <input type="text" name="priceChangeTo" id="priceChangeToInput" class="col-2" ngModel/>
+        <input type="date" name="priceChangeTo" id="priceChangeToInput" class="col-2" 
+        [(ngModel)]="pciFormData.priceChangeTo" #priceChangeTo="ngModel"/>
     </div>
     </fieldset>
 
     <fieldset id="group3">
-        <div class="panel-heading" style='background: darkseagreen'>group3</div> 
+        <div class="panel-heading" style='background: darkseagreen'>Group3</div> 
     <div class="form-group grid">
         <div class="row">
-          <input type="radio" style='margin-left: 1%' class="form-group-input"  name="sendXmlOption" value="SendUpdated" ngModel/>        
+          <input type="radio" style='margin-left: 1%' class="form-group-input"  name="sendXmlOption" value="SendUpdated" 
+          [(ngModel)]="pciFormData.sendXmlOption" #sendXmlOption="ngModel"/>
           <label for="sendXmlOption" class="col-10 col-form-label">Send Updated XML to Customer </label>      
           </div>
           <div class="row">          
-            <input type="radio" style='margin-left: 1%' class="form-group-input " name="sendXmlOption" value="SendFullRefresh" ngModel/>
+            <input type="radio" style='margin-left: 1%' class="form-group-input " name="sendXmlOption" value="SendFullRefresh" 
+            [(ngModel)]="pciFormData.sendXmlOption" #sendXmlOption="ngModel"/>
             <label for="sendXmlOption" class="col-10 col-form-label">Send Full Refresh to XML</label>
             </div>
     </div>
   </fieldset>  
-   <input type="submit" class="btn btn-success" />
+
+   <input type="submit" value="Submit" class="btn btn-success" [disabled]="!pciForm1.form.valid" />
   </form>  
 </div>
