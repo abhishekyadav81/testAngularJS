@@ -1,7 +1,5 @@
-<div class="container" style='background:rgb(84, 177, 84)'>
-  <form (submit)="onSubmit()" #pciForm1="ngForm" action="post">
-
-  
+<div class="container" style='background:rgb(84, 177, 84);margin-bottom: 1%'>
+  <form (submit)="onSubmit()" #pciForm1="ngForm" action="post" class='form-horizontal'>
     <fieldset id="group1" >
     <div class="panel panel-default grid">  
        <div class="panel-heading" style='background: rgb(176, 211, 176)'>Group1</div> 
@@ -20,7 +18,14 @@
     <div class="form-group panel-body">
           <label for="zoneInput" class="col-form-label col-lg-4 ">Zone</label>
           <input type="text" id="zoneInput" name="zone" class="col-xs-8  input-sm" 
+          pattern=^[a-zA-Z0-9]+((,)[a-zA-Z0-9]+)*[a-zA-Z0-9]+$
           [(ngModel)]="pciFormData.zone" #zone="ngModel" />
+
+         <div *ngIf="zone.invalid && (zone.dirty || zone.touched)" class="alert alert-danger">
+            <div *ngIf="zone.errors.pattern"> 
+              Zone not valid.
+            </div>	
+          </div>          
       </div>
       <div class="form-group ">
           <label for="yearInput" class="col-form-label col-lg-4">Year</label>
@@ -43,20 +48,36 @@
     <div class="form-group grid">
       <div >
             <label class="col-form-label col-lg-4">Other Attributes</label>
-                <input type="radio" class="form-group-input" name="attributes1">            
+                <input type="radio" class="form-group-input" name="attributes1" 
+                [(ngModel)]="pciFormData.type" value="crop">            
                 <label  class="col-form-label col-lg-2">Crop</label> 
                 <input type="text" name="crop" id="cropInput" class="col-sm-1 input-sm" 
-                [(ngModel)]="pciFormData.crop" #crop="ngModel" />                
+                [required]="pciFormData.type==='crop'" [(ngModel)]="pciFormData.crop" #crop="ngModel" />
+                
+                <div *ngIf="pciFormData.type==='crop' && crop.invalid && (crop.dirty || crop.touched)" class="alert alert-danger">
+                  <div *ngIf="crop.errors.required">
+                    Crop and Hybrid/Varierty both are required.
+                  </div>
+                </div>                
+
         </div>
 
             <div >                      
               <label class="col-form-label col-lg-2" style="margin-left: 35.5%">Hybrid/Variety</label>
               <input type="text" name="hybrid" id="hybridInput" class="input-sm" 
-              [(ngModel)]="pciFormData.hybrid" #hybrid="ngModel"/>
+              [required]="pciFormData.type==='crop'" [(ngModel)]="pciFormData.hybrid" #hybrid="ngModel"/>
+
+              <div *ngIf="pciFormData.type==='crop' && hybrid.invalid && (hybrid.dirty || hybrid.touched)" class="alert alert-danger">
+                <div *ngIf="hybrid.errors.required">
+                  Crop and Hybrid/Varierty both are required.
+                </div>
+              </div>                
+            
             </div>
           
           <div >          
-            <input type="radio" class="form-group-input input-sm" style="margin-left: 34%" name="attributes1">            
+            <input type="radio" class="form-group-input input-sm" style="margin-left: 34%" name="attributes1"
+            [(ngModel)]="pciFormData.type" value="material">            
             <label class="col-form-label col-lg-2">Material Id</label>
             <input type="text" id="materialInput" name="material" class="input-sm"
             [(ngModel)]="pciFormData.material" #material="ngModel"/>
@@ -73,6 +94,9 @@
         [(ngModel)]="pciFormData.priceChangeTo" #priceChangeTo="ngModel"/>
     </div>
     </fieldset>
-   <input type="submit" value="Submit" class="btn btn-default" [disabled]="!pciForm1.form.valid" />
+    <div align="center">    
+    <input type="submit" value="Submit" class="btn btn-default" [disabled]="!pciForm1.form.valid" 
+    style="margin-bottom:10px"/>
+  </div>
   </form>  
 </div>

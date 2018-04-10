@@ -7,5 +7,6 @@ export class PciFormData {
     material: String;
     priceChangeFrom: Date;
     priceChangeTo: Date;
+    type : String ='';
   }
   
