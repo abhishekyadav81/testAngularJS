@@ -1,12 +1,15 @@
-<div class="container" style='background:rgb(84, 177, 84);margin-bottom: 1%'>
-  <form (submit)="onSubmit()" #pciForm1="ngForm" action="post" class='form-horizontal'>
+<div class="container" style='position: fixed;width: 100%; height: 100%;background:rgb(142, 214, 142);margin-bottom: 1%'>
+  <form (submit)="onSubmit()" #pciForm1="ngForm" action="post">
     <fieldset id="group1" >
+        <div class="panel-heading" style='text-align:center;'>
+          <H2>Push Price Data</H2></div>       
     <div class="panel panel-default grid">  
        <div class="panel-heading" style='background: rgb(176, 211, 176)'>Group1</div> 
             
         <div class="form-group panel-body" >
           <label for="dealerInput" class=" col-form-label col-lg-4">Dealer</label>      
-          <input type="text" id="dealerInput" name="dealer" class="col-lg-3 input-sm" 
+          
+          <input type="text" id="dealerInput" name="dealer" style="width:25%"
            required [(ngModel)]="pciFormData.dealer" #dealer="ngModel" />
 
            <div *ngIf="dealer.invalid && (dealer.dirty || dealer.touched)" class="alert alert-danger">
@@ -43,7 +46,7 @@
     </fieldset>
 
     <fieldset id="group2">  
-        <div class="panel-heading" style='background: darkseagreen'>Group2</div> 
+        <div class="panel-heading" style='background:rgb(176, 211, 176)'>Group2</div> 
 
     <div class="form-group grid">
       <div >
@@ -51,7 +54,7 @@
                 <input type="radio" class="form-group-input" name="attributes1" 
                 [(ngModel)]="pciFormData.type" value="crop">            
                 <label  class="col-form-label col-lg-2">Crop</label> 
-                <input type="text" name="crop" id="cropInput" class="col-sm-1 input-sm" 
+                <input type="text" name="crop" id="cropInput" style="width:5%" 
                 [required]="pciFormData.type==='crop'" [(ngModel)]="pciFormData.crop" #crop="ngModel" />
                 
                 <div *ngIf="pciFormData.type==='crop' && crop.invalid && (crop.dirty || crop.touched)" class="alert alert-danger">
