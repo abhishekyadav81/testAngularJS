@@ -8,5 +8,6 @@ export class PciFormData {
     priceChangeFrom: Date;
     priceChangeTo: Date;
     type : String ='';
+    businessId:String;
   }
   
