@@ -1,4 +1,4 @@
-<div class="container" style='position: fixed;width: 100%; height: 100%;background:rgb(142, 214, 142);
+<div class="container" style='width: 100%; height: 100%;background:rgb(142, 214, 142);
   top: 0;   left: 0;  min-width: 100%;  min-height: 100%; margin-bottom: 1%'>
   <form (submit)="onSubmit()" #pciForm1="ngForm" action="post">
     <fieldset id="group1" >
@@ -51,6 +51,12 @@
           <input id="businessId" name="businessId" class="col-xs-8 input-sm" 
           [(ngModel)]="pciFormData.businessId" #businessId="ngModel" />
         </div>
+        <div class="form-group">
+          <label class="col-form-label col-lg-4">Last Requested Date</label>
+          
+          <input type="date" name="lastRequested" id="lastRequestedInput" class="input-sm" 
+          [(ngModel)]="pciFormData.lastRequestedDate" #lastRequested="ngModel"/>
+      </div>
     </div>      
     </fieldset>
 
@@ -76,7 +82,7 @@
         </div>
 
             <div >                      
-              <label class="col-form-label col-lg-2" style="margin-left: 35.5%">Hybrid/Variety</label>
+              <label class="col-form-label col-lg-2" style="margin-left: 35%">Hybrid/Variety</label>
               <input type="text" name="hybrid" id="hybridInput" class="input-sm" 
               [required]="pciFormData.type==='crop'" [(ngModel)]="pciFormData.hybrid" #hybrid="ngModel"/>
 
@@ -90,19 +96,12 @@
             </div>
           
           <div >          
-            <input type="radio" class="form-group-input input-sm" style="margin-left: 34%" name="attributes1"
+            <input type="radio" class="form-group-input input-sm" style="margin-left: 33.75%" name="attributes1"
             [(ngModel)]="pciFormData.type" value="material">            
             <label class="col-form-label col-lg-2">Material Id</label>
             <input type="text" id="materialInput" name="material" class="input-sm"
             [(ngModel)]="pciFormData.material" #material="ngModel"/>
           </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-2 col-form-label">Last Requested Date</label>
-        
-        <input type="date" name="lastRequested" id="lastRequestedInput" class="input-sm" 
-        [(ngModel)]="pciFormData.lastRequestedDate" #lastRequested="ngModel"/>
-
     </div>
     </fieldset>
     <div align="center">    
