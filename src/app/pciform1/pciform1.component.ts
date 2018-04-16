@@ -19,11 +19,15 @@ export class PciForm1Component implements OnInit {
   }
 
   onSubmit() {
-    if(!this.pciFormData.year){
-      console.error('Year is required');
-    } else{
+    if(this.pciFormData.type ==='crop'){
+      this.pciFormData.material='';
+    } else if (this.pciFormData.type ==='material'){
+      this.pciFormData.crop='';
+      this.pciFormData.material='';
+    }
+    
       console.log(JSON.stringify(this.pciFormData));
       this.pciFormService.invokePciFormService(this.pciFormData).subscribe( error => console.log(error));
     }
   }
-}
+

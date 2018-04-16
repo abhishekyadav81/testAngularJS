@@ -17,7 +17,7 @@ export class PciFormService {
 
  
   constructor(private http:HttpClient) { }
-    private pciFormUrl ="http://localhost:9080/some";
+    private pciFormUrl =" https://ewsoat.us.f4f.com/status";
  
   /** POST: submit data to the server */
   invokePciFormService (pciFormData: PciFormData) {
