@@ -5,9 +5,8 @@ export class PciFormData {
     crop: String;
     hybrid: String;
     material: String;
-    priceChangeFrom: Date;
-    priceChangeTo: Date;
     type : String ='';
     businessId:String;
+    lastRequestedDate: Date;
   }
   

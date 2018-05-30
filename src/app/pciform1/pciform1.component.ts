@@ -23,7 +23,7 @@ export class PciForm1Component implements OnInit {
       this.pciFormData.material='';
     } else if (this.pciFormData.type ==='material'){
       this.pciFormData.crop='';
-      this.pciFormData.material='';
+      this.pciFormData.hybrid='';
     }
     
       console.log(JSON.stringify(this.pciFormData));

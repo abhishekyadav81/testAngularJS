@@ -17,7 +17,8 @@ export class PciFormService {
 
  
   constructor(private http:HttpClient) { }
-    private pciFormUrl =" https://ewsoat.us.f4f.com/status";
+    private pciFormUrl =
+    " https://ewsoat.us.f4f.com/api-json/PriceSheetRequestPush";
  
   /** POST: submit data to the server */
   invokePciFormService (pciFormData: PciFormData) {
