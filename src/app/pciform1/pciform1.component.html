@@ -67,12 +67,12 @@
       <div >
             <label class="col-form-label col-lg-4">Other Attributes</label>
                 <input type="radio" class="form-group-input" name="attributes1" 
-                [(ngModel)]="pciFormData.type" value="crop">            
+                (click)= "pciFormData.material =''" [(ngModel)]="pciFormData.typeChoice" value="crop">            
                 <label  class="col-form-label col-lg-2">Crop</label> 
                 <input type="text" name="crop" id="cropInput" style="width:5%" 
-                [required]="pciFormData.type==='crop'" [(ngModel)]="pciFormData.crop" #crop="ngModel" />
+                [required]="pciFormData.typeChoice==='crop'" [(ngModel)]="pciFormData.crop" #crop="ngModel" />
                 
-                <div *ngIf="pciFormData.type==='crop' && crop.invalid && (crop.dirty || crop.touched)" class="alert-danger"
+                <div *ngIf="pciFormData.typeChoice==='crop' && crop.invalid && (crop.dirty || crop.touched)" class="alert-danger"
                 style="text-align:center;display:inline-block;">
                   <div *ngIf="crop.errors.required">
                     Crop and Hybrid/Varierty both are required.
@@ -84,9 +84,9 @@
             <div >                      
               <label class="col-form-label col-lg-2" style="margin-left: 35%">Hybrid/Variety</label>
               <input type="text" name="hybrid" id="hybridInput" class="input-sm" 
-              [required]="pciFormData.type==='crop'" [(ngModel)]="pciFormData.hybrid" #hybrid="ngModel"/>
+              [required]="pciFormData.typeChoice==='crop'" [(ngModel)]="pciFormData.hybrid" #hybrid="ngModel"/>
 
-              <div *ngIf="pciFormData.type==='crop' && hybrid.invalid && (hybrid.dirty || hybrid.touched)" class="alert-danger"
+              <div *ngIf="pciFormData.typeChoice==='crop' && hybrid.invalid && (hybrid.dirty || hybrid.touched)" class="alert-danger"
               style="text-align:center;display:inline-block;">
                 <div *ngIf="hybrid.errors.required">
                   Crop and Hybrid/Varierty both are required.
@@ -97,10 +97,19 @@
           
           <div >          
             <input type="radio" class="form-group-input input-sm" style="margin-left: 33.75%" name="attributes1"
-            [(ngModel)]="pciFormData.type" value="material">            
+            (click)= "pciFormData.hybrid =''; pciFormData.crop=''" [(ngModel)]="pciFormData.typeChoice" value="material">            
             <label class="col-form-label col-lg-2">Material Id</label>
             <input type="text" id="materialInput" name="material" class="input-sm"
-            [(ngModel)]="pciFormData.material" #material="ngModel"/>
+            [required]="pciFormData.typeChoice==='material'" [(ngModel)]="pciFormData.material" #material="ngModel"/>
+
+            <div *ngIf="pciFormData.typeChoice==='material' && material.invalid && (material.dirty || material.touched)" class="alert-danger"
+            style="text-align:center;display:inline-block;">
+              <div *ngIf="material.errors.required">
+                Material is required.
+              </div>
+            </div>                
+
+
           </div>
     </div>
     </fieldset>
