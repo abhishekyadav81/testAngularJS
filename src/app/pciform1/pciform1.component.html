@@ -21,7 +21,7 @@
           </div>
         </div>
     <div class="form-group panel-body">
-          <label for="zoneInput" class="col-form-label col-lg-4 ">Zone</label>
+          <label for="zoneInput" class="col-form-label col-lg-4 ">Zone *</label>
           <input type="text" id="zoneInput" name="zone" class="col-xs-8  input-sm" 
           pattern=^[a-zA-Z0-9]+((,)[a-zA-Z0-9]+)*[a-zA-Z0-9]+$
           [(ngModel)]="pciFormData.zone" #zone="ngModel" />
@@ -37,6 +37,7 @@
           <label for="yearInput" class="col-form-label col-lg-4">Year</label>
 
           <input id="year" name="year" class="col-xs-8 input-sm" 
+          maxlength="4"
           required [(ngModel)]="pciFormData.year" #year="ngModel" />
         
         <div *ngIf="year.invalid && (year.dirty || year.touched)" class="alert-danger"
@@ -68,8 +69,9 @@
             <label class="col-form-label col-lg-4">Other Attributes</label>
                 <input type="radio" class="form-group-input" name="attributes1" 
                 (click)= "pciFormData.material =''" [(ngModel)]="pciFormData.typeChoice" value="crop">            
-                <label  class="col-form-label col-lg-2">Crop</label> 
+                <label  class="col-form-label col-lg-2">Crop *</label> 
                 <input type="text" name="crop" id="cropInput" style="width:5%" 
+                pattern=^[a-zA-Z0-9]+((,)[a-zA-Z0-9]+)*[a-zA-Z0-9]+$
                 [required]="pciFormData.typeChoice==='crop'" [(ngModel)]="pciFormData.crop" #crop="ngModel" />
                 
                 <div *ngIf="pciFormData.typeChoice==='crop' && crop.invalid && (crop.dirty || crop.touched)" class="alert-danger"
@@ -77,13 +79,18 @@
                   <div *ngIf="crop.errors.required">
                     Crop and Hybrid/Varierty both are required.
                   </div>
+                  <div *ngIf="crop.errors.pattern"> 
+                      Crop not valid.
+                    </div>	
+        
                 </div>                
 
         </div>
 
             <div >                      
-              <label class="col-form-label col-lg-2" style="margin-left: 35%">Hybrid/Variety</label>
+              <label class="col-form-label col-lg-2" style="margin-left: 35%">Hybrid/Variety *</label>
               <input type="text" name="hybrid" id="hybridInput" class="input-sm" 
+              pattern=^[a-zA-Z0-9]+((,)[a-zA-Z0-9]+)*[a-zA-Z0-9]+$
               [required]="pciFormData.typeChoice==='crop'" [(ngModel)]="pciFormData.hybrid" #hybrid="ngModel"/>
 
               <div *ngIf="pciFormData.typeChoice==='crop' && hybrid.invalid && (hybrid.dirty || hybrid.touched)" class="alert-danger"
@@ -91,6 +98,11 @@
                 <div *ngIf="hybrid.errors.required">
                   Crop and Hybrid/Varierty both are required.
                 </div>
+
+                <div *ngIf="hybrid.errors.pattern"> 
+                    Hybrid/Varierty not valid.
+                  </div>	
+              
               </div>                
             
             </div>
@@ -98,8 +110,9 @@
           <div >          
             <input type="radio" class="form-group-input input-sm" style="margin-left: 33.75%" name="attributes1"
             (click)= "pciFormData.hybrid =''; pciFormData.crop=''" [(ngModel)]="pciFormData.typeChoice" value="material">            
-            <label class="col-form-label col-lg-2">Material Id</label>
+            <label class="col-form-label col-lg-2">Material Id *</label>
             <input type="text" id="materialInput" name="material" class="input-sm"
+            pattern=^[a-zA-Z0-9]+((,)[a-zA-Z0-9]+)*[a-zA-Z0-9]+$
             [required]="pciFormData.typeChoice==='material'" [(ngModel)]="pciFormData.material" #material="ngModel"/>
 
             <div *ngIf="pciFormData.typeChoice==='material' && material.invalid && (material.dirty || material.touched)" class="alert-danger"
@@ -107,15 +120,29 @@
               <div *ngIf="material.errors.required">
                 Material is required.
               </div>
-            </div>                
+              <div *ngIf="material.errors.pattern"> 
+                  Material not valid.
+                </div>	
+            </div>  
+            
+           
 
 
+          </div>
+
+          <div>
+            <br />
+              * Multiple Values are allowed with comma separators
           </div>
     </div>
     </fieldset>
     <div align="center">    
-    <input type="submit" value="Submit" class="btn btn-default" [disabled]="!pciForm1.form.valid" 
-    style="margin-bottom:10px"/>
+        <button mat-raised-button (click)="openDialog()"
+        class="btn btn-default" [disabled]="!pciForm1.form.valid" 
+    style="margin-bottom:10px">Submit</button>
+
+  <!--  <input type="submit" value="Submit" class="btn btn-default" [disabled]="!pciForm1.form.valid" 
+    style="margin-bottom:10px"/> -->
   </div>
   </form>  
 </div>
