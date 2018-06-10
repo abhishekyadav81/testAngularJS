@@ -23,7 +23,7 @@
     <div class="form-group panel-body">
           <label for="zoneInput" class="col-form-label col-lg-4 ">Zone *</label>
           <input type="text" id="zoneInput" name="zone" class="col-xs-8  input-sm" 
-          pattern=^[a-zA-Z0-9]+((,)[a-zA-Z0-9]+)*[a-zA-Z0-9]+$
+          pattern=^[a-zA-Z0-9]+((,)[a-zA-Z0-9]+)*$
           [(ngModel)]="pciFormData.zone" #zone="ngModel" />
 
          <div *ngIf="zone.invalid && (zone.dirty || zone.touched)" class="alert-danger"
@@ -33,7 +33,7 @@
             </div>	
           </div>          
       </div>
-      <div class="form-group ">
+      <div class="form-group panel-body">
           <label for="yearInput" class="col-form-label col-lg-4">Year</label>
 
           <input id="year" name="year" class="col-xs-8 input-sm" 
@@ -47,12 +47,12 @@
           </div>
         </div>
         </div>
-        <div class="form-group ">
+        <div class="form-group panel-body">
           <label for="businessIdInput" class="col-form-label col-lg-4">Business Id</label>
           <input id="businessId" name="businessId" class="col-xs-8 input-sm" 
           [(ngModel)]="pciFormData.businessId" #businessId="ngModel" />
         </div>
-        <div class="form-group">
+        <div class="form-group panel-body">
           <label class="col-form-label col-lg-4">Last Requested Date</label>
           
           <input type="date" name="lastRequested" id="lastRequestedInput" class="input-sm" 
@@ -61,17 +61,23 @@
     </div>      
     </fieldset>
 
+
+
+
     <fieldset id="group2">  
         <div class="panel-heading" style='background:rgb(176, 211, 176)'>Group2</div> 
-
-    <div class="form-group grid">
-      <div >
+        <div class="panel panel-default grid">  
+          <div class="form-group panel-body">
             <label class="col-form-label col-lg-4">Other Attributes</label>
-                <input type="radio" class="form-group-input" name="attributes1" 
+        </div>
+        <div class="form-group panel-body">
+          <div>
+                <input type="radio" style="margin-right: 100" name="attributes1" 
                 (click)= "pciFormData.material =''" [(ngModel)]="pciFormData.typeChoice" value="crop">            
-                <label  class="col-form-label col-lg-2">Crop *</label> 
-                <input type="text" name="crop" id="cropInput" style="width:5%" 
-                pattern=^[a-zA-Z0-9]+((,)[a-zA-Z0-9]+)*[a-zA-Z0-9]+$
+                <label  style="width:32.5%" class="col-form-label col-lg-4">Crop *</label> 
+                <input type="text" name="crop" id="cropInput"  
+                pattern=^[a-zA-Z0-9]+((,)[a-zA-Z0-9]+)*$
+                class="col-xs-8 input-sm"
                 [required]="pciFormData.typeChoice==='crop'" [(ngModel)]="pciFormData.crop" #crop="ngModel" />
                 
                 <div *ngIf="pciFormData.typeChoice==='crop' && crop.invalid && (crop.dirty || crop.touched)" class="alert-danger"
@@ -82,15 +88,17 @@
                   <div *ngIf="crop.errors.pattern"> 
                       Crop not valid.
                     </div>	
-        
-                </div>                
-
+                </div>    
         </div>
+        </div>            
 
-            <div >                      
-              <label class="col-form-label col-lg-2" style="margin-left: 35%">Hybrid/Variety *</label>
+        <!-- </div>-->
+
+            <div class="form-group">
+              <div>                      
+              <label class="col-form-label col-lg-4" >Hybrid/Variety *</label>
               <input type="text" name="hybrid" id="hybridInput" class="input-sm" 
-              pattern=^[a-zA-Z0-9]+((,)[a-zA-Z0-9]+)*[a-zA-Z0-9]+$
+              pattern=^[a-zA-Z0-9]+((,)[a-zA-Z0-9]+)*$
               [required]="pciFormData.typeChoice==='crop'" [(ngModel)]="pciFormData.hybrid" #hybrid="ngModel"/>
 
               <div *ngIf="pciFormData.typeChoice==='crop' && hybrid.invalid && (hybrid.dirty || hybrid.touched)" class="alert-danger"
@@ -104,15 +112,15 @@
                   </div>	
               
               </div>                
-            
-            </div>
+            </div> 
+             </div> 
           
-          <div >          
-            <input type="radio" class="form-group-input input-sm" style="margin-left: 33.75%" name="attributes1"
+          <div class="form-group">          
+            <input type="radio" style="margin-right: 0%"   name="attributes1"
             (click)= "pciFormData.hybrid =''; pciFormData.crop=''" [(ngModel)]="pciFormData.typeChoice" value="material">            
-            <label class="col-form-label col-lg-2">Material Id *</label>
+            <label class="col-form-label col-lg-4" style="width:32.5%">Material Id *</label>
             <input type="text" id="materialInput" name="material" class="input-sm"
-            pattern=^[a-zA-Z0-9]+((,)[a-zA-Z0-9]+)*[a-zA-Z0-9]+$
+            pattern=^[a-zA-Z0-9]+((,)[a-zA-Z0-9]+)*$
             [required]="pciFormData.typeChoice==='material'" [(ngModel)]="pciFormData.material" #material="ngModel"/>
 
             <div *ngIf="pciFormData.typeChoice==='material' && material.invalid && (material.dirty || material.touched)" class="alert-danger"
@@ -124,25 +132,20 @@
                   Material not valid.
                 </div>	
             </div>  
-            
-           
-
-
           </div>
 
           <div>
             <br />
               * Multiple Values are allowed with comma separators
           </div>
-    </div>
+        </div>
     </fieldset>
     <div align="center">    
-        <button mat-raised-button (click)="openDialog()"
-        class="btn btn-default" [disabled]="!pciForm1.form.valid" 
-    style="margin-bottom:10px">Submit</button>
+        <!-- <button mat-raised-button (click)="openDialog()" class="btn btn-default" 
+          [disabled]="!pciForm1.form.valid" style="margin-bottom:10px">Submit</button> -->
 
-  <!--  <input type="submit" value="Submit" class="btn btn-default" [disabled]="!pciForm1.form.valid" 
-    style="margin-bottom:10px"/> -->
+   <input type="submit" value="Submit" class="btn btn-default" [disabled]="!pciForm1.form.valid" 
+    style="margin-bottom:10px"/>
   </div>
   </form>  
 </div>

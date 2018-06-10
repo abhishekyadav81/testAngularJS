@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms'
 import { HttpClientModule }    from '@angular/common/http';
-import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 import { AppComponent } from './app.component';
@@ -19,8 +19,7 @@ import {PciFormService} from '../service/pciform.service'
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule,
-    MatDialogModule
+    HttpClientModule
   ],
   providers: [PciFormService],
   bootstrap: [AppComponent]
