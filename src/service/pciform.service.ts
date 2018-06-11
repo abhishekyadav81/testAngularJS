@@ -10,17 +10,17 @@ import 'rxjs/add/operator/catch';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json','Accept':'text/xml' })
-  
+
 };
 
 @Injectable()
 export class PciFormService {
 
- 
+
   constructor(private http:HttpClient) { }
     private pciFormUrl =
-    " https://ewsoat.us.f4f.com/api-json/PriceSheetRequestPush";
- 
+    " https://api01-np.agro.services:443/pricepush/ws_wrapper_post";
+
   /** POST: submit data to the server */
   invokePciFormService (pciFormData: PciFormData) {
     return this.http.post<PciFormData>(this.pciFormUrl, pciFormData, httpOptions)
