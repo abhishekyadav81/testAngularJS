@@ -9,7 +9,7 @@ import 'rxjs/add/operator/catch';
 
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json','Accept':'text/xml' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json','Accept':'*/*' })
 
 };
 

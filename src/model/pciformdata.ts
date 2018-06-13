@@ -29,4 +29,5 @@ export class PciFormData {
   partnerType : String ='EBID';
   businessId:String;
   validateZones: String = 'false';
+  success :Boolean;
 }

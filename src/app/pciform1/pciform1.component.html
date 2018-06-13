@@ -26,7 +26,8 @@
           pattern=^[^\,]+((,)[^\,]+)*$
           [(ngModel)]="pciFormData.zoneID" #zone="ngModel" />
 
-         <div *ngIf="zone.invalid && (zone.dirty || zone.touched)" class="alert-danger"
+         <!--<div *ngIf="zone.invalid && (zone.dirty || zone.touched)" class="alert-danger"-->
+         <div *ngIf="zone.invalid" class="alert-danger"
          style="text-align:center;display:inline-block;">
             <div *ngIf="zone.errors.pattern">
               Zone not valid.
@@ -83,7 +84,7 @@
                 <div *ngIf="pciFormData.typeChoice==='crop' && crop.invalid && (crop.dirty || crop.touched)" class="alert-danger"
                 style="text-align:center;display:inline-block;">
                   <div *ngIf="crop.errors.required">
-                    Crop and Hybrid/Varierty both are required.
+                    Crop is required.
                   </div>
                   <div *ngIf="crop.errors.pattern">
                       Crop not valid.
@@ -96,22 +97,22 @@
 
             <div class="form-group">
               <div>
-              <label class="col-form-label col-lg-4" >Hybrid/Variety *</label>
+                <label class="col-form-label col-lg-4" >Hybrid/Variety </label>
               <input type="text" name="hybrid" id="hybridInput" class="input-sm"
-              pattern=^[^\,]+((,)[^\,]+)*$
-              [required]="pciFormData.typeChoice==='crop'" [(ngModel)]="pciFormData.acronymName" #hybrid="ngModel"/>
+               [(ngModel)]="pciFormData.acronymName" #hybrid="ngModel"/>
 
-              <div *ngIf="pciFormData.typeChoice==='crop' && hybrid.invalid && (hybrid.dirty || hybrid.touched)" class="alert-danger"
+                <!--<div *ngIf="pciFormData.typeChoice==='crop' && hybrid.invalid && (hybrid.dirty || hybrid.touched)" class="alert-danger"-->
+              <!--<div *ngIf="pciFormData.typeChoice==='crop'" class="alert-danger"
               style="text-align:center;display:inline-block;">
-                <div *ngIf="hybrid.errors.required">
-                  Crop and Hybrid/Varierty both are required.
-                </div>
+                &lt;!&ndash;<div *ngIf="hybrid.errors.required">
+                  Crop 1 is required.
+                </div>&ndash;&gt;
 
-                <div *ngIf="hybrid.errors.pattern">
-                    Hybrid/Varierty not valid.
-                  </div>
+                &lt;!&ndash;<div *ngIf="hybrid.errors.pattern">
+                    Hybrid not valid.
+                  </div>&ndash;&gt;
 
-              </div>
+              </div>-->
             </div>
              </div>
 
@@ -145,7 +146,12 @@
           [disabled]="!pciForm1.form.valid" style="margin-bottom:10px">Submit</button> -->
 
    <input type="submit" value="Submit" class="btn btn-default" [disabled]="!pciForm1.form.valid"
-    style="margin-bottom:10px"/>
-  </div>
+          style="margin-bottom:10px"/>
+    </div>
   </form>
+
+  <div *ngIf="pciFormData.success===false">
+    Price Request has been submitted successfully
+  </div>
+
 </div>

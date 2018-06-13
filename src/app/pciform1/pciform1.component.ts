@@ -26,8 +26,19 @@ export class PciForm1Component implements OnInit {
       this.pciFormData.acronymName='';
     }
 
-      console.log(JSON.stringify(this.pciFormData));
-      this.pciFormService.invokePciFormService(this.pciFormData).subscribe( error => console.log(error));
+      //console.log(JSON.stringify(this.pciFormData));
+      //this.pciFormService.invokePciFormService(this.pciFormData).subscribe( error => console.log(error));
+      //this.pciFormService.invokePciFormService(this.pciFormData)
+      //.subscribe( error => {console.log(error),this.pciFormData.success=false}, () => this.pciFormData.success=true);
+      //this.pciFormService.invokePciFormService(this.pciFormData)
+        //.subscribe( error => {console.log(error),this.pciFormData.success=false},
+          //() =>{ this.pciFormData.success=true,setTimeout(() => {this.pciFormData.success=false}, 3000);});
+
+    console.log(JSON.stringify(this.pciFormData));
+    this.pciFormService.invokePciFormService(this.pciFormData)
+      .subscribe( error => {console.log(error),this.pciFormData.success=false},
+        () =>{ this.pciFormData.success=true,setTimeout(() => {this.pciFormData.success=false}, 3000);});
+
     }
   }
 
