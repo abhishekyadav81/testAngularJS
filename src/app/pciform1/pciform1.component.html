@@ -24,16 +24,20 @@
           <label for="zoneInput" class="col-form-label col-lg-4 ">Zone *</label>
           <input type="text" id="zoneInput" name="zone" class="col-xs-8  input-sm"
           pattern=^[^\,]+((,)[^\,]+)*$
-          [(ngModel)]="pciFormData.zoneID" #zone="ngModel" />
+                 required [(ngModel)]="pciFormData.zoneID" #zone="ngModel" />
 
-         <!--<div *ngIf="zone.invalid && (zone.dirty || zone.touched)" class="alert-danger"-->
-         <div *ngIf="zone.invalid" class="alert-danger"
-         style="text-align:center;display:inline-block;">
+      <!--<div *ngIf="zone.invalid" class="alert-danger"-->
+         <div *ngIf="zone.invalid && (zone.dirty || zone.touched)" class="alert-danger"
+              style="text-align:center;display:inline-block;">
+           <div *ngIf="zone.errors.required">
+             Zone is required.
+           </div>
             <div *ngIf="zone.errors.pattern">
               Zone not valid.
             </div>
           </div>
-      </div>
+
+    </div>
       <div class="form-group panel-body">
           <label for="yearInput" class="col-form-label col-lg-4">Year</label>
 
