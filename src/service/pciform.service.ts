@@ -22,9 +22,14 @@ export class PciFormService {
     " https://api01-np.agro.services:443/pricepush/ws_wrapper_post";
 
   /** POST: submit data to the server */
-  invokePciFormService (pciFormData: PciFormData) {
+  /*invokePciFormService (pciFormData: PciFormData) {
     return this.http.post<PciFormData>(this.pciFormUrl, pciFormData, httpOptions)
     .catch(this.errorHandler)
+  }*/
+
+  invokePciFormService (pciFormData: PciFormData) {
+    return this.http.post<Response>(this.pciFormUrl, pciFormData, httpOptions)
+      .catch(this.errorHandler)
   }
 
   errorHandler(error: HttpErrorResponse){
