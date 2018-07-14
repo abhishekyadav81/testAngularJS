@@ -27,7 +27,7 @@ export class PciFormData {
   typeChoice : String ='';
   push : String ='yes';
   partnerType : String ='EBID';
-  businessId:String;
+  businessId:String = "0062668030000";
   validateZones: String = 'false';
   success :Boolean;
 }
