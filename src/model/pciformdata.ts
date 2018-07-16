@@ -30,4 +30,5 @@ export class PciFormData {
   businessId:String = "0062668030000";
   validateZones: String = 'false';
   success :Boolean;
+  updateNeeded :Boolean;
 }
