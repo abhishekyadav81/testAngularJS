@@ -7,6 +7,9 @@ import { PciFormService } from '../../service/pciform.service';
 import {PciFormData} from '../../model/pciformdata'
 import {ConfirmationDialog} from './confirmationdialog'
 
+export interface DialogData {
+  updateAvailable : Boolean;
+}
 
 @Component({
   selector: 'app-pciform1',
@@ -34,9 +37,10 @@ export class PciForm1Component implements OnInit {
 
    console.log(JSON.stringify(this.pciFormData));
    this.pciFormService.invokePciFormService(this.pciFormData)
-      .subscribe( data => {console.log("success , message id is " +data.messageId),this.pciFormData.success=true,
+      .subscribe( result => {console.log("success , message id is " +result.messageId),this.pciFormData.success=true,
       this.mytemplateForm.resetForm(),
-      this.dialog.open(ConfirmationDialog,{data:{ dateUpdated: data.dateUpdated }}),
+      this.dialog.open(ConfirmationDialog,{
+        data: {updateAvailable: result.updateAvailable}}),
       setTimeout(() => {this.pciFormData.success=false}, 3000);},
         error =>{ console.log("Error"), this.pciFormData.success=false});
     }

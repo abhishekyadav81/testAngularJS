@@ -19,8 +19,9 @@ export class PciFormService {
 
 
   constructor(private http:HttpClient) { }
-    private pciFormUrl =
-    " https://api01-np.agro.services:443/pricepush/ws_wrapper_post";
+    private pciFormUrl ="http://localhost:9000/ws_wrapper_post";
+   // " https://api01-np.agro.services:443/pricepush/ws_wrapper_post";
+
 
   /** POST: submit data to the server */
   /*invokePciFormService (pciFormData: PciFormData) {
