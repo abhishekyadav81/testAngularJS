@@ -1,10 +1,10 @@
 <div class="container" style='z-index:+1;background:rgb(142, 214, 142);'>
 <h1 mat-dialog-title>Request Status</h1>
 <div   mat-dialog-content >
-  
-  <p *ngIf="data.updateAvailable=='true'">The Request has been Submitted Successfully</p>
 
-  <p *ngIf="data.updateAvailable=='false'">No update available for this partner</p>
+  <p *ngIf="data.updateAvailable">The Request has been Submitted Successfully</p>
+
+  <p *ngIf="!data.updateAvailable">No update available for this partner</p>
 </div>
 <div mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>

@@ -10,7 +10,7 @@ import 'rxjs/add/operator/catch';
 
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json','Accept':'*/*' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json','Accept':'application/json' })
 
 };
 
@@ -19,8 +19,8 @@ export class PciFormService {
 
 
   constructor(private http:HttpClient) { }
-    private pciFormUrl ="http://localhost:9000/ws_wrapper_post";
-   // " https://api01-np.agro.services:443/pricepush/ws_wrapper_post";
+    private pciFormUrl ="https://api01-np.agro.services:443/pricepush/f4fcaller";
+   // " https://api01-np.agro.services:443/pricepush/f4fcaller";
 
 
   /** POST: submit data to the server */
