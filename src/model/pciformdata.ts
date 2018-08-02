@@ -24,7 +24,7 @@ export class PciFormData {
   productId: String;
   priceDate: Date;
   type : String ='';
-  typeChoice : String ='';
+  typeChoice : String ='crop';
   push : String ='yes';
   partnerType : String ='EBID';
   businessId:String = "0062668030000";
