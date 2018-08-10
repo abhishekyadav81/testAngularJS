@@ -21,6 +21,7 @@ export class PciFormService {
   constructor(private http:HttpClient) { }
     private pciFormUrl ="https://api01-np.agro.services:443/pricepush/f4fcaller";
    // " https://api01-np.agro.services:443/pricepush/f4fcaller";
+  // " http://localhost:8080/f4fcaller";
 
 
   /** POST: submit data to the server */

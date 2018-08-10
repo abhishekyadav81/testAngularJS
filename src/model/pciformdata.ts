@@ -20,7 +20,7 @@ export class PciFormData {
   zoneID: String;
   year: Number;
   specieId: String;
-  acronymName: String;
+  acronymName: String ='';
   productId: String;
   priceDate: Date;
   type : String ='';

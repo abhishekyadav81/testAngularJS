@@ -41,7 +41,8 @@ export class PciForm1Component implements OnInit {
       this.mytemplateForm.resetForm(),
       this.dialog.open(ConfirmationDialog,{
         data: {updateAvailable: result.updateAvailable}}),
-      setTimeout(() => {this.pciFormData.success=false}, 3000);},
+      //setTimeout(() => {this.pciFormData.success=false}, 3000);},
+        this.mytemplateForm.resetForm({attributes1:'crop'}),
         error =>{ console.log("Error"), this.pciFormData.success=false});
     }
   }
